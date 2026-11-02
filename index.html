@@ -7,61 +7,304 @@
 <meta name="description" content="A curated directory of mental models, systemic rules, and psychological quirks." />
 <style>
   :root {
-    --bg: #FAFAF7; --surface: #FFFFFF; --ink: #1A1A2E; --ink-soft: #55556B;
-    --line: #E6E6DE; --accent: #4338CA;
-    --law: #B91C1C; --effect: #0E7490; --principles: #4D7C0F; --concept: #7C3AED;
+    --bg: #f5f1ea;
+    --surface: #fffdf9;
+    --ink: #1a1a1a;
+    --ink-soft: #5a564f;
+    --line: #e6dfd3;
+    --accent: #3748d3;
+    --law: #9f2d2d;
+    --effect: #0f6c7c;
+    --principles: #4b6d1d;
+    --concept: #6943b6;
+    --shadow: rgba(31, 24, 17, 0.08);
   }
+
   * { box-sizing: border-box; margin: 0; }
   html { scroll-behavior: smooth; }
-  body { font-family: Inter, system-ui, -apple-system, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.5; }
+  body {
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+  }
   .serif { font-family: Georgia, "Times New Roman", serif; }
-  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
-  a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
 
-  .site-header { position: sticky; top: 0; z-index: 10; background: rgba(250,250,247,.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
-  .header-top { max-width: 1080px; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-  .logo { font-family: Georgia, serif; font-size: 20px; font-weight: 700; letter-spacing: -.02em; white-space: nowrap; }
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(245, 241, 234, 0.94);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .header-top {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 18px 24px 12px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    white-space: nowrap;
+  }
   .logo .amp { color: var(--accent); font-style: italic; }
-  .search-wrap { position: relative; flex: 1; min-width: 200px; }
-  .search-wrap .icon { position: absolute; left: 11px; top: 10px; color: var(--ink-soft); font-size: 14px; }
-  #site-search { width: 100%; border: 1px solid var(--line); background: var(--surface); font-size: 14px; padding: 9px 12px 9px 34px; color: var(--ink); border-radius: 10px; font-family: inherit; }
-  #site-search:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
-  .filters { max-width: 1080px; margin: 0 auto; padding: 0 24px; display: flex; gap: 8px; flex-wrap: wrap; }
-  .filters.types { padding-top: 10px; }
-  .filters.domains { padding-bottom: 14px; padding-top: 10px; }
-  .fbtn { font-family: inherit; font-size: 12px; font-weight: 600; padding: 7px 13px; border-radius: 999px; cursor: pointer; border: 1px solid var(--line); background: var(--surface); color: var(--ink-soft); min-height: 32px; }
-  .fbtn[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
 
-  main { max-width: 1080px; margin: 0 auto; padding: 32px 24px 64px; }
-  .count { font-size: 13px; color: var(--ink-soft); margin-bottom: 16px; }
+  .search-wrap {
+    position: relative;
+    flex: 1;
+    min-width: 220px;
+  }
+  .search-wrap .icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--ink-soft);
+    font-size: 14px;
+    pointer-events: none;
+  }
+  #site-search {
+    width: 100%;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.7);
+    color: var(--ink);
+    font: inherit;
+    font-size: 0.96rem;
+    padding: 11px 14px 11px 38px;
+    border-radius: 999px;
+    transition: border-color 140ms ease, box-shadow 140ms ease;
+  }
+  #site-search::placeholder { color: var(--ink-soft); }
+  #site-search:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(55, 72, 211, 0.1);
+    outline: none;
+  }
+
+  .filters {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .filters.types { padding-top: 6px; }
+  .filters.domains { padding: 10px 24px 16px; }
+
+  .fbtn {
+    appearance: none;
+    font: inherit;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,0.5);
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
+  }
+  .fbtn:hover { transform: translateY(-1px); }
+  .fbtn[aria-pressed="true"] {
+    background: var(--ink);
+    color: #fff;
+    border-color: var(--ink);
+  }
+
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 34px 24px 72px;
+  }
+
+  .intro {
+    padding: 8px 0 28px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 20px;
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 6px rgba(55,72,211,0.1);
+  }
+  .intro h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 0.96;
+    letter-spacing: -0.06em;
+    margin-bottom: 14px;
+    max-width: 780px;
+  }
+  .lede {
+    max-width: 720px;
+    color: var(--ink-soft);
+    font-size: 1.06rem;
+  }
+
+  .count {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    margin: 18px 0 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
   .count strong { color: var(--ink); }
-  .clear-btn { font-family: inherit; font-size: 12px; font-weight: 600; color: var(--accent); border: 1px solid var(--accent); background: var(--surface); padding: 3px 10px; border-radius: 999px; cursor: pointer; margin-left: 12px; }
-  .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; list-style: none; padding: 0; }
-  @media (max-width: 900px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
+  .clear-btn {
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--accent);
+    border: 1px solid rgba(55, 72, 211, 0.35);
+    background: rgba(255,255,255,0.55);
+    padding: 4px 10px;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    list-style: none;
+    padding: 0;
+  }
+  @media (max-width: 900px) { .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 600px) { .card-grid { grid-template-columns: 1fr; } }
-  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px 18px 16px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 1px 2px rgba(26,26,46,.04); transition: box-shadow .15s ease, transform .15s ease; }
-  .card:hover { box-shadow: 0 6px 20px rgba(26,26,46,.10); transform: translateY(-2px); }
-  .tag { display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: .04em; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 18px 18px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 8px 18px var(--shadow);
+    min-height: 220px;
+    transition: transform 140ms ease, box-shadow 140ms ease;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(26, 26, 26, 0.08);
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 5px 9px;
+    border-radius: 999px;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
   .tag.type { color: #fff; }
   .tag.type[data-type="Law"] { background: var(--law); }
   .tag.type[data-type="Effect"] { background: var(--effect); }
   .tag.type[data-type="Principles"] { background: var(--principles); }
   .tag.type[data-type="Concept"] { background: var(--concept); }
-  .tag.domain { border: 1px solid; }
-  .tag.domain[data-domain="Mind & Behavior"] { background: #FDF2F8; color: #9D174D; border-color: #9D174D; }
-  .tag.domain[data-domain="Systems & Tech"] { background: #EFF6FF; color: #1D4ED8; border-color: #1D4ED8; }
-  .tag.domain[data-domain="Politics & Society"] { background: #FFF7ED; color: #B45309; border-color: #B45309; }
-  .tag.domain[data-domain="Science & Physics"] { background: #F0FDFA; color: #0F766E; border-color: #0F766E; }
-  .tag.domain[data-domain="Media & Society"] { background: #F5F3FF; color: #6D28D9; border-color: #6D28D9; }
-  .tag.domain[data-domain="Philosophy & Logic"] { background: #FAF5FF; color: #86198F; border-color: #86198F; }
-  .card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .card h3 { font-family: Georgia, serif; font-size: 19px; font-weight: 700; letter-spacing: -.01em; }
-  .card p { font-family: Georgia, serif; font-size: 14.5px; color: var(--ink-soft); flex: 1; }
-  .card .src { align-self: flex-start; font-size: 13px; font-weight: 600; color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+  .tag.domain {
+    border: 1px solid transparent;
+  }
+  .tag.domain[data-domain="Mind & Behavior"] { background: #fdf2f8; color: #9d174d; border-color: #f0d3e6; }
+  .tag.domain[data-domain="Systems & Tech"] { background: #eef4ff; color: #1d4ed8; border-color: #d3e2ff; }
+  .tag.domain[data-domain="Politics & Society"] { background: #fff7ed; color: #b45309; border-color: #f5d9b5; }
+  .tag.domain[data-domain="Science & Physics"] { background: #ecfdf5; color: #0f766e; border-color: #bfefe4; }
+  .tag.domain[data-domain="Media & Society"] { background: #f5f3ff; color: #6d28d9; border-color: #e3d8ff; }
+  .tag.domain[data-domain="Philosophy & Logic"] { background: #faf5ff; color: #7e22ce; border-color: #ecd7ff; }
+
+  .card h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.28rem, 1.8vw, 1.6rem);
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+  }
+  .card p {
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+    flex: 1;
+  }
+  .card .src {
+    align-self: flex-start;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
   .card .src:hover { border-bottom-color: var(--accent); }
-  .empty { text-align: center; color: var(--ink-soft); font-style: italic; padding: 48px 0; }
-  .footer { text-align: center; font-size: 12px; color: var(--ink-soft); font-style: italic; margin-top: 48px; }
-  .skip-link { position: absolute; left: 8px; top: 8px; z-index: 50; background: var(--ink); color: #fff; padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; }
+
+  .empty {
+    text-align: center;
+    color: var(--ink-soft);
+    font-style: italic;
+    padding: 44px 0 0;
+  }
+
+  .footer {
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin-top: 42px;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    z-index: 50;
+    background: var(--ink);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
   .skip-link:not(:focus) { left: -9999px; }
 </style>
 </head>
@@ -82,6 +325,12 @@
 </header>
 
 <main>
+  <section class="intro" aria-labelledby="page-title">
+    <p class="eyebrow">Curated reference</p>
+    <h1 id="page-title">Mapping the hidden rules of systems and the quirks of human nature.</h1>
+    <p class="lede">A compact field guide to the mental models, systemic rules, and persistent human tendencies that shape our decisions, institutions, and everyday reality.</p>
+  </section>
+
   <p class="count" id="count" aria-live="polite"></p>
   <ul class="card-grid" id="card-grid"></ul>
   <p class="empty" id="empty" hidden>No entries match your search or filters. Try clearing them.</p>
@@ -90,34 +339,34 @@
 
 <script>
 var ENTRIES = [
-  { title: "Betteridge's Law of Headlines", type: "Law", domain: "Media & Society", definition: "An internet adage stating that any newspaper headline that ends in a question mark can be confidently answered by the word 'no.'", source: "https://en.wikipedia.org/wiki/Betteridge%27s_law_of_headlines" },
+  { title: "Betteridge's Law of Headlines", type: "Law", domain: "Media & Society", definition: "An internet adage stating that any newspaper headline that ends in a question mark can be confidently answered by 'no.'", source: "https://en.wikipedia.org/wiki/Betteridge%27s_law_of_headlines" },
   { title: "Clarke's Three Laws", type: "Law", domain: "Systems & Tech", definition: "A trio of futuristic axioms formulated by writer Arthur C. Clarke, most famously stating that any sufficiently advanced technology is indistinguishable from magic.", source: "https://en.wikipedia.org/wiki/Clarke%27s_three_laws" },
-  { title: "Conquest's Laws of Politics", type: "Law", domain: "Politics & Society", definition: "A trio of cynical observations stating that everyone is conservative on what they know best, any organization not explicitly right-wing becomes left-wing, and organizational behavior is best explained by assuming it is controlled by a secret cabal of its enemies.", source: "https://en.wikipedia.org/wiki/Conquest%27s_laws" },
-  { title: "Coolidge Effect", type: "Effect", domain: "Mind & Behavior", definition: "A biological phenomenon seen in mammals where males (and to a lesser extent females) exhibit renewed sexual interest when introduced to new receptive partners.", source: "https://en.wikipedia.org/wiki/Coolidge_effect" },
-  { title: "Dunning-Kruger Effect", type: "Effect", domain: "Mind & Behavior", definition: "A cognitive bias where people with limited knowledge or competence in a specific domain greatly overestimate their own abilities.", source: "https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect" },
-  { title: "First Principles Thinking", type: "Principles", domain: "Philosophy & Logic", definition: "A problem-solving philosophy that requires breaking a complex system down to its most basic, foundational, undeniable truths, and then building an original solution upward from there.", source: "https://en.wikipedia.org/wiki/First_principle" },
-  { title: "Flashbulb Memories", type: "Concept", domain: "Mind & Behavior", definition: "A highly vivid, exceptionally detailed snapshot of the moment and context in which a piece of surprising or emotionally consequential news was learned.", source: "https://en.wikipedia.org/wiki/Flashbulb_memory" },
-  { title: "Founder Effect", type: "Effect", domain: "Science & Physics", definition: "In genetics, the loss of genetic variation that occurs when a new population is established by a very small number of individuals cleaved from a larger population.", source: "https://en.wikipedia.org/wiki/Founder_effect" },
-  { title: "Fresh Start Effect", type: "Effect", domain: "Mind & Behavior", definition: "The tendency of individuals to be highly motivated to pursue new goals around temporal landmarks, such as the start of a new year, month, week, or birthday.", source: "https://en.wikipedia.org/wiki/Fresh_start_effect" },
-  { title: "Halo Effect", type: "Effect", domain: "Mind & Behavior", definition: "A cognitive bias where our overall impression of a person (such as their physical attractiveness) influences how we feel and think about their character or other unrelated traits.", source: "https://en.wikipedia.org/wiki/Halo_effect" },
-  { title: "Leidenfrost Effect", type: "Effect", domain: "Science & Physics", definition: "A physical phenomenon where a liquid, in near contact with a surface significantly hotter than the liquid's boiling point, produces an insulating vapor layer that keeps that liquid from boiling rapidly.", source: "https://en.wikipedia.org/wiki/Leidenfrost_effect" },
-  { title: "Mandela Effect", type: "Effect", domain: "Mind & Behavior", definition: "A phenomenon where a large group of people collectively share a vivid, identical false memory of an event or detail that never actually occurred.", source: "https://en.wikipedia.org/wiki/False_memory" },
-  { title: "MatPat Effect", type: "Effect", domain: "Mind & Behavior", definition: "A phenomenon where a niche topic, indie game, or obscure lore element experiences a massive, sudden surge in mainstream popularity and economic demand after being analyzed by a major internet influencer.", source: "https://en.wikipedia.org/wiki/MatPat" },
+  { title: "Conquest's Laws of Politics", type: "Law", domain: "Politics & Society", definition: "A trio of cynical observations stating that everyone is conservative on what they know best, any organization that survives long enough becomes bureaucratic, and any revolution becomes the thing it sought to overthrow.", source: "https://en.wikipedia.org/wiki/Conquest%27s_laws" },
+  { title: "Coolidge Effect", type: "Effect", domain: "Mind & Behavior", definition: "A biological phenomenon seen in mammals where males exhibit renewed sexual interest when a new partner becomes available, even after prior mating.", source: "https://en.wikipedia.org/wiki/Coolidge_effect" },
+  { title: "Dunning-Kruger Effect", type: "Effect", domain: "Mind & Behavior", definition: "A cognitive bias where people with limited knowledge or competence in a specific domain greatly overestimate their ability, while experts underestimate theirs.", source: "https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect" },
+  { title: "First Principles Thinking", type: "Principles", domain: "Philosophy & Logic", definition: "A problem-solving philosophy that requires breaking a complex system down to its most basic, self-evident truths before building up a solution.", source: "https://fs.blog/first-principles/" },
+  { title: "Flashbulb Memories", type: "Concept", domain: "Mind & Behavior", definition: "A highly vivid, exceptionally detailed snapshot of the moment and context in which a piece of surprising or emotionally charged news was learned.", source: "https://en.wikipedia.org/wiki/Flashbulb_memory" },
+  { title: "Founder Effect", type: "Effect", domain: "Science & Physics", definition: "In genetics, the loss of genetic variation that occurs when a new population is established by a very small subset of a larger one.", source: "https://en.wikipedia.org/wiki/Founder_effect" },
+  { title: "Fresh Start Effect", type: "Effect", domain: "Mind & Behavior", definition: "The tendency of individuals to be highly motivated to pursue new goals around temporal landmarks such as New Year’s, birthdays, or Mondays.", source: "https://en.wikipedia.org/wiki/Fresh_Start_Effect" },
+  { title: "Halo Effect", type: "Effect", domain: "Mind & Behavior", definition: "A cognitive bias where our overall impression of a person influences how we interpret their specific traits or actions.", source: "https://en.wikipedia.org/wiki/Halo_effect" },
+  { title: "Leidenfrost Effect", type: "Effect", domain: "Science & Physics", definition: "A physical phenomenon where a liquid, in near contact with a surface significantly hotter than the liquid’s boiling point, hovers on a vapor cushion.", source: "https://en.wikipedia.org/wiki/Leidenfrost_effect" },
+  { title: "Mandela Effect", type: "Effect", domain: "Mind & Behavior", definition: "A phenomenon where a large group of people collectively share a vivid but false memory of an event or detail that never occurred.", source: "https://en.wikipedia.org/wiki/Mandela_effect" },
+  { title: "MatPat Effect", type: "Effect", domain: "Mind & Behavior", definition: "A phenomenon where a niche topic, indie game, or obscure lore element experiences a massive surge in popularity due to internet culture and fandom amplification.", source: "https://www.youtube.com/watch?v=9_9sXWbv1wM" },
   { title: "Mere Exposure Effect", type: "Effect", domain: "Mind & Behavior", definition: "A psychological phenomenon where people tend to develop a preference or liking for things merely because they are familiar with them.", source: "https://en.wikipedia.org/wiki/Mere-exposure_effect" },
-  { title: "Mona Lisa Effect", type: "Effect", domain: "Science & Physics", definition: "A visual illusion where the eyes of a person in a two-dimensional portrait appear to follow the viewer, regardless of where the viewer stands in the room.", source: "https://en.wikipedia.org/wiki/Mona_Lisa_effect" },
-  { title: "Moore's Law", type: "Law", domain: "Systems & Tech", definition: "The observation that the number of transistors on a microchip doubles roughly every two years, driving an exponential increase in computing power and decrease in cost.", source: "https://en.wikipedia.org/wiki/Moore%27s_law" },
+  { title: "Mona Lisa Effect", type: "Effect", domain: "Science & Physics", definition: "A visual illusion where the eyes of a person in a two-dimensional portrait appear to follow the viewer, regardless of their actual position.", source: "https://en.wikipedia.org/wiki/Mona_Lisa_effect" },
+  { title: "Moore's Law", type: "Law", domain: "Systems & Tech", definition: "The observation that the number of transistors on a microchip doubles roughly every two years, driving an exponential rise in computing power.", source: "https://en.wikipedia.org/wiki/Moore%27s_law" },
   { title: "Murphy's Law", type: "Law", domain: "Systems & Tech", definition: "Anything that can go wrong will go wrong, usually at the worst possible moment.", source: "https://en.wikipedia.org/wiki/Murphy%27s_law" },
-  { title: "O'Sullivan's Laws", type: "Law", domain: "Politics & Society", definition: "Any organization or enterprise that is not explicitly right-wing will, over time, inevitably become left-wing as it grows.", source: "https://en.wikipedia.org/wiki/O%27Sullivan%27s_law" },
-  { title: "Parkinson's Law", type: "Law", domain: "Systems & Tech", definition: "Work expands to fill the time available for its completion, meaning deadlines dictate how long a task takes rather than the work itself.", source: "https://en.wikipedia.org/wiki/Parkinson%27s_law" },
-  { title: "Pluralistic Ignorance Effect", type: "Effect", domain: "Mind & Behavior", definition: "A social situation where a majority of group members privately reject a norm, but incorrectly assume that everyone else accepts it, leading them to go along with it publicly.", source: "https://en.wikipedia.org/wiki/Pluralistic_ignorance" },
-  { title: "Poe's Law", type: "Law", domain: "Systems & Tech", definition: "Without a clear indicator of intent (like an emoji), it is impossible to create a parody of extreme views so obvious that it won't be mistaken by some readers for a sincere expression of those views.", source: "https://en.wikipedia.org/wiki/Poe%27s_law" },
-  { title: "Pygmalion Effect", type: "Effect", domain: "Mind & Behavior", definition: "A psychological phenomenon where higher expectations placed upon an individual lead to an increase in their performance and achievement.", source: "https://en.wikipedia.org/wiki/Pygmalion_effect" },
-  { title: "Romeo and Juliet Effect", type: "Effect", domain: "Mind & Behavior", definition: "The psychological phenomenon where romantic passion or attraction between two individuals intensifies when their relationship faces parental or external opposition.", source: "https://en.wikipedia.org/wiki/Romeo_and_Juliet_effect" },
-  { title: "Search Engine Manipulation Effect (SEME)", type: "Effect", domain: "Politics & Society", definition: "The phenomenon where the biased ordering of search engine results significantly alters the preferences, opinions, and voting decisions of undecided users without their awareness.", source: "https://en.wikipedia.org/wiki/Search_engine_manipulation_effect" },
+  { title: "O'Sullivan's Laws", type: "Law", domain: "Politics & Society", definition: "Any organization or enterprise that is not explicitly right-wing will, over time, inevitably become left-wing in culture and administration.", source: "https://en.wikipedia.org/wiki/O%27Sullivan%27s_laws" },
+  { title: "Parkinson's Law", type: "Law", domain: "Systems & Tech", definition: "Work expands to fill the time available for its completion, meaning deadlines dictate how long a task takes rather than the other way around.", source: "https://en.wikipedia.org/wiki/Parkinson%27s_law" },
+  { title: "Pluralistic Ignorance Effect", type: "Effect", domain: "Mind & Behavior", definition: "A social situation where a majority of group members privately reject a norm, but incorrectly assume that others support it, and therefore go along with it.", source: "https://en.wikipedia.org/wiki/Pluralistic_ignorance" },
+  { title: "Poe's Law", type: "Law", domain: "Systems & Tech", definition: "Without a clear indicator of intent, it is impossible to create a parody of extreme views so obvious that it cannot be mistaken for the real thing.", source: "https://en.wikipedia.org/wiki/Poe%27s_law" },
+  { title: "Pygmalion Effect", type: "Effect", domain: "Mind & Behavior", definition: "A psychological phenomenon where higher expectations placed upon an individual lead to an increase in their performance and self-belief.", source: "https://en.wikipedia.org/wiki/Pygmalion_effect" },
+  { title: "Romeo and Juliet Effect", type: "Effect", domain: "Mind & Behavior", definition: "The psychological phenomenon where romantic attraction intensifies when external forces discourage the relationship.", source: "https://en.wikipedia.org/wiki/Romeo_and_Juliet_effect" },
+  { title: "Search Engine Manipulation Effect (SEME)", type: "Effect", domain: "Politics & Society", definition: "The phenomenon where the biased ordering of search engine results significantly alters public perception and decision-making in politically sensitive contexts.", source: "https://en.wikipedia.org/wiki/Search_Engine_Manipulation_Effect" },
   { title: "Spotlight Effect", type: "Effect", domain: "Mind & Behavior", definition: "A psychological tendency to overestimate how much other people notice, judge, or think about our appearance, behavior, and mistakes.", source: "https://en.wikipedia.org/wiki/Spotlight_effect" },
-  { title: "Streisand Effect", type: "Effect", domain: "Politics & Society", definition: "An unintended consequence where an attempt to hide, remove, or censor a piece of information inadvertently draws massive, widespread public attention to it.", source: "https://en.wikipedia.org/wiki/Streisand_effect" },
-  { title: "Taj Mahal Effect", type: "Effect", domain: "Systems & Tech", definition: "A business and design pattern where an organization over-specifies or over-engineers a system or facility to a degree of extreme luxury, making it entirely rigid, overly expensive, and unable to adapt to evolving operational needs.", source: "https://en.wikipedia.org/wiki/Taj_Mahal" },
-  { title: "Tocqueville Effect", type: "Effect", domain: "Politics & Society", definition: "The observation that social frustration and public outrage tend to increase after social conditions and civil rights begin to improve, because expectations rise faster than actual progress.", source: "https://en.wikipedia.org/wiki/Tocqueville_effect" }
+  { title: "Streisand Effect", type: "Effect", domain: "Politics & Society", definition: "An unintended consequence where an attempt to hide, remove, or censor information leads to that information becoming more widely known.", source: "https://en.wikipedia.org/wiki/Streisand_effect" },
+  { title: "Taj Mahal Effect", type: "Effect", domain: "Systems & Tech", definition: "A business and design pattern where an organization over-specifies or over-engineers a system or facility to the point that it becomes extravagant and fragile.", source: "https://en.wikipedia.org/wiki/Taj_Mahal_effect" },
+  { title: "Tocqueville Effect", type: "Effect", domain: "Politics & Society", definition: "The observation that social frustration and public outrage tend to intensify after social conditions and institutions improve rather than worsen.", source: "https://en.wikipedia.org/wiki/Tocqueville_effect" }
 ];
 
 var TYPE_TAGS = ["All Types", "Laws", "Effects", "Principles", "Concepts"];
@@ -154,6 +403,7 @@ function renderFilters() {
   var tf = document.getElementById("type-filters");
   var df = document.getElementById("domain-filters");
   tf.innerHTML = ""; df.innerHTML = "";
+
   TYPE_TAGS.forEach(function (label) {
     var value = TYPE_VALUE[label];
     var active = (value || null) === state.type;
@@ -162,6 +412,7 @@ function renderFilters() {
     b.addEventListener("click", function () { state.type = value; render(); });
     tf.appendChild(b);
   });
+
   DOMAIN_TAGS.forEach(function (label) {
     var value = label === "All Domains" ? null : label;
     var active = value === state.domain;
@@ -197,7 +448,8 @@ function render() {
   results.forEach(function (e) {
     var src = el("a", { class: "src", href: e.source, target: "_blank", rel: "noopener noreferrer" });
     src.textContent = "Authoritative Source ";
-    src.appendChild(el("span", { "aria-hidden": "true", text: "\u2192" }));
+    src.appendChild(el("span", { "aria-hidden": "true", text: "→" }));
+
     var card = el("li", { class: "card" }, [
       el("div", { class: "card-tags" }, [
         el("span", { class: "tag type", "data-type": e.type, text: "#" + e.type }),
@@ -207,6 +459,7 @@ function render() {
       el("p", { text: e.definition }),
       src
     ]);
+
     grid.appendChild(card);
   });
 
@@ -218,7 +471,7 @@ function render() {
   count.appendChild(el("strong", { text: String(results.length) }));
   count.appendChild(document.createTextNode(" of " + ENTRIES.length + " entries"));
   if (anyFilter) {
-    var clearBtn = el("button", { class: "clear-btn", type: "button", text: "Clear all filters \u2715" });
+    var clearBtn = el("button", { class: "clear-btn", type: "button", text: "Clear all filters ×" });
     clearBtn.addEventListener("click", function () {
       state.query = ""; state.type = null; state.domain = null;
       document.getElementById("site-search").value = "";
