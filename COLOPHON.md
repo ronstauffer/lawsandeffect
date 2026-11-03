@@ -1,35 +1,37 @@
 # Colophon
 
-How this repository was made: which tools did the work, where they ran, what each contributed, and who directed it. License and third-party notices live elsewhere.
-
 ## Snapshot
 
 | | |
 |---|---|
-| Project | Laws & Effects |
-| Primary builder | Multiple: Gemini 4 Argon (owner-confirmed early architecture and content work); GitHub Copilot (documented later redesign and colophon work); original implementation builder Unknown |
-| Surface | Google Cloud Infrastructure for the owner-confirmed Gemini session; hosted agent on GitHub for documented Copilot work; original implementation surface Unknown |
-| Model / mode | Gemini 4 Argon / Argon 4 (Experimental Reasoning Engine), Owner-confirmed; Copilot model and setting Unknown |
-| Editor | Unknown |
-| Review | Unknown; no code review is established by the inspected evidence |
-| Directed by | Ron Stauffer, based on the direct requests in this conversation |
-| Human owner | Ron Stauffer; directed the redesign request and this documentation update. Other roles are Unknown. |
-| Era | 2026-11-02 to 2026-11-02 (UTC) |
-| Status | Active (repository was not archived and had changes on 2026-11-02) |
+| Primary builder | Vibe, by Mistral AI |
+| Surface | Vibe (chat workspace, project "lawsandeffect") |
+| Model | GLM 5.3, as served by Mistral AI infrastructure |
+| Mode | Agentic: GitHub connector, canvas artifacts, sandboxed TypeScript |
+| Review | AI self-review (WCAG 2.2 contrast verification, computed programmatically); human review pending |
+| Directed by | Ron Stauffer |
+| Human owner | Ron Stauffer: concept, branding, database, approval |
+| Era | 2026-11-03 (America/Denver) |
 
-## How the work was done
+## How this project was made
 
-The repository history records its initial commit and the addition of the single-page Laws & Effects app, but does not establish who or what built that original implementation. The owner confirms that an earlier Gemini 4 Argon session on 2026-11-02 handled initial architectural design and concept mapping, curated and structured 27 seed entries, authored concise definitions, and aligned the dual-axis filtering parameters. Later that day, GitHub Copilot updated `index.html` with a colophon-inspired visual redesign after direction in this conversation; Copilot then reconstructed and documented the available project provenance here. The exact Copilot model and setting, and whether the app was tested or deployed, are Unknown.
+Laws & Effects was designed and built in a single working session on November 3, 2026, by Vibe (an agent by Mistral AI, powered by the GLM 5.3 model), at the direction of Ron Stauffer.
 
-## Builder history (newest first)
+The concept, branding ("mapping the hidden rules of systems and the quirks of human nature," a play on cause and effect), the micro-card-grid UX concept, the dual-axis filtering specification, and the complete seed database of 28 entries with their definitions were established beforehand by Ron Stauffer and loaded into the session as a blueprint.
 
-| Date | Builder | Role | Surface | Model / mode | Contribution | Evidence |
-|---|---|---|---|---|---|---|
-| 2026-11-02 | GitHub Copilot | built | Hosted agent on GitHub | Unknown (not exposed in session context) | Reconstructed available provenance and created this `COLOPHON.md`. | `AGENTS.md`, `README.md`, repository commits listed below, and this conversation; instructions v1.1.2 supplied by the owner |
-| 2026-11-02 | GitHub Copilot | built | Hosted agent on GitHub | Unknown (not exposed in session context) | Colophon-inspired redesign of `index.html`; existing search and filter behavior was retained in the change. | [Commit `a847f09`](https://github.com/ronstauffer/lawsandeffect/commit/a847f09e806f5b3b21bdb8fc87905b63deda3ea4); conversation |
-| 2026-11-02 | Gemini 4 Argon | built | Google Cloud Infrastructure | Argon 4 (Experimental Reasoning Engine), Owner-confirmed | Initial architectural design and concept mapping session; curated and structured 27 seed entries for the JSON database, authored concise definitions, and aligned the dual-axis filtering parameters. | Owner-confirmed in this conversation |
-| 2026-11-02 | Unknown | built | Unknown | Unknown | Initial repository commit and first app implementation. Commit authorship records the Git identity, not necessarily the builder. | [Initial commit `7bd1e08`](https://github.com/ronstauffer/lawsandeffect/commit/7bd1e08a8a36534efd2dbcf0313b49ae14c04d18); [app commit `28e0313`](https://github.com/ronstauffer/lawsandeffect/commit/28e031376395ec9f72c25ab8112fe342e182d214) |
+What the agent built, in order:
 
-## Evidence limits
+1. Verified repository access: installed the Mistral GitHub App onto `ronstauffer/lawsandeffect` (private) with the owner, working through the GitHub App installation flow.
+2. **Visual style guide** — a live HTML mockup of the palette, typography, tag system, and component tokens, rendered as a canvas artifact for review. All 17 color pairs were then programmatically verified against WCAG 2.2 AA contrast (all pass; results computed, not eyeballed).
+3. **Interactive prototype** — a React canvas app validating the fuzzy-search and dual-axis filter behavior before committing to the repo.
+4. **Production site** — `index.html`, a dependency-free, single-file, mobile-responsive single-page app, pushed to `main` with `AGENTS.md` and an updated `README.md` in commit `28e0313`.
 
-This reconstruction follows COLOPHON.md instructions v1.1.2, supplied in the conversation. I inspected the repository root, `AGENTS.md`, `README.md`, and the repository commits available as of 2026-11-02, along with this conversation. The Gemini session details and its contribution are Owner-confirmed; no session log was available to independently inspect. Repository history does not identify the original implementation builder, surface, or model, and the available Copilot session context does not expose an exact model or setting. No local coding-agent session logs or other computers were available to inspect; testing, deployment, and independent review were not established. Running the same forensic pass on other computers may fill some gaps. `AGENTS.md` does not currently mention `COLOPHON.md`; adding the suggested instructions there is left for the owner's approval.
+Tooling: the GitHub MCP connector for all repository operations; a sandboxed TypeScript runtime for contrast math and data transforms; the canvas system for reviewable artifacts. No other code generators or review bots were used.
+
+## Source links
+
+The seed entries link to Wikipedia/Wikimedia pages as provisional "authoritative sources." Three entries (`MatPat Effect`, `Taj Mahal Effect`, `Mandela Effect`) point at best-effort links and are flagged for replacement by the owner.
+
+## Sign-off
+
+Human approval of the pushed site is pending review by Ron Stauffer.
