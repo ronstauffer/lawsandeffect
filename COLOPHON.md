@@ -35,9 +35,15 @@ The concept, branding, micro-card-grid UX, dual-axis filtering specification, an
 
 ## Known open items
 
-- Three seed entries (`MatPat Effect`, `Taj Mahal Effect`, `Mandela Effect`) link to provisional Wikipedia sources pending replacement by the owner.
+- Two seed entries (`MatPat Effect`, `Taj Mahal Effect`) link to provisional Wikipedia sources pending replacement by the owner.
 - Human sign-off on the live site is pending review by Ron Stauffer.
 - `AGENTS.md` does not currently mention `COLOPHON.md`; adding that instruction is left for the owner's approval.
+
+## Research notes (2026-11-03)
+
+- Added **Gell-Mann Amnesia Effect** entry with definition and authoritative source (Michael Crichton's 2002 speech "Why Speculate?" via Ritholtz.com).
+- Updated **Mandela Effect** source from Wikipedia's False Memory page to Britannica (https://www.britannica.com/science/Mandela-effect) for improved authority.
+- MatPat Effect and Taj Mahal Effect definitions appear to be owner-coined neologisms; currently retain provisional Wikipedia links pending owner-supplied authoritative sources.
 
 ## Evidence limits
 
