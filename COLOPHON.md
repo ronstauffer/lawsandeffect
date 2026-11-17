@@ -14,7 +14,7 @@ How this repository was made: which tools did the work, where they ran, what eac
 | Review | Unknown for the site code (no code review is recorded in Git history). AI: Claude Code checked this colophon against Git history on 2026-11-05. Vibe's WCAG 2.2 AA contrast check of the palette is self-reported. Review by a Grok bot is not established. Human sign-off pending Ron Stauffer |
 | Directed by | Ron Stauffer, based on the direct requests in the working conversations |
 | Human owner | Ron Stauffer: concept, branding, seed database, approvals |
-| Era | 2026-11-02 to 2026-11-05 (UTC) |
+| Era | 2026-11-02 to 2026-11-17 (UTC) |
 | Status | Active |
 
 ## How the work was done
@@ -25,6 +25,7 @@ The concept, branding, micro-card-grid UX, dual-axis filtering specification, an
 
 | Date | Builder | Role | Surface | Model / mode | Contribution | Evidence |
 |---|---|---|---|---|---|---|
+| 2026-11-17 | Cursor cloud agent (Grok 4.7) | built | Cursor cloud agent | Grok 4.7, as identified in the session | Added 15 entries from the approved initial-candidate drafts and a Paradox type (filter label, `TYPE_VALUE`, and `--paradox` tag color). Updated `AGENTS.md`, `README.md`, and this file. Prepared as a pull request for review; not merged and not pushed to `main`. | This commit (`git log -- index.html COLOPHON.md`) |
 | 2026-11-05 | Claude Code (Anthropic) | reviewed | Claude Code cloud session (hosted agent) | Not written here; shown by the tool in the `Co-Authored-By` trailer of the commit that adds this row | Forensic review of this colophon against Git history (commits `7bd1e08` through `e8c3523`), `AGENTS.md`, `README.md` and `CNAME`; added the corrections below. No site code changed. | Git history; this commit (`git log -- COLOPHON.md`) |
 | 2026-11-03 | Unknown | built | Unknown (a local Git clone using the github.com SSH remote) | Unknown | Merged GitHub's `main` (with `CNAME`) into the local branch holding `c81cb84`. | [Merge `e8c3523`](https://github.com/ronstauffer/lawsandeffect/commit/e8c3523b807a4412b63e77275166ab1e9291b6b3) |
 | 2026-11-03 | Unknown | built | Committed through GitHub (committer `GitHub <noreply@github.com>`); web page or API Unknown | Unknown | Added `CNAME` with the custom domain `lawsandeffect.com`; whether and where the site was deployed is not established. | [Commit `bbd3782`](https://github.com/ronstauffer/lawsandeffect/commit/bbd3782b6e84e690490522f61d8a1de4b41a9f94) |
@@ -48,6 +49,32 @@ The concept, branding, micro-card-grid UX, dual-axis filtering specification, an
 - Added **Gell-Mann Amnesia Effect** entry with definition and authoritative source (Michael Crichton's 2002 speech "Why Speculate?" via Ritholtz.com).
 - Updated **Mandela Effect** source from Wikipedia's False Memory page to Britannica (https://www.britannica.com/science/Mandela-effect) for improved authority.
 - MatPat Effect and Taj Mahal Effect definitions appear to be owner-coined neologisms; currently retain provisional Wikipedia links pending owner-supplied authoritative sources.
+
+## Content batch (2026-11-17)
+
+Prepared for Ron Stauffer's review and not merged. Fifteen entries from the November 2026 initial-candidate drafts were added to `ENTRIES`. Bertrand Russell's dictum and Paradox of the swarm were not added; both remain unresolved in those drafts.
+
+The new type is `Paradox`. The filter label is Paradoxes, `TYPE_VALUE` maps that label to `Paradox`, and the tag uses `--paradox` (`#92400E`) with white text. Calculated contrast of that pair is about 7.1:1, above the WCAG 2.2 AA 4.5:1 bar.
+
+Titles, types, and domains added:
+
+- AI Productivity Paradox — Paradox — Systems & Tech
+- Arrow's Impossibility Theorem — Concept — Politics & Society
+- Asimov's Three Laws of Robotics — Principles — Systems & Tech (fictional principles, said so in the definition)
+- Berkson's Paradox — Paradox — Science & Physics
+- Chesterton's Fence — Principles — Politics & Society
+- Easterlin Paradox — Paradox — Politics & Society (definition states that the long-run claim is disputed)
+- Fermi Paradox — Paradox — Science & Physics
+- Intimacy Paradox (Ferguson's framing) — Paradox — Mind & Behavior (informal observation attributed to Rebecca Ferguson, not presented as established science)
+- Jevons Paradox — Paradox — Politics & Society
+- Meditations on Moloch — Concept — Politics & Society (Scott Alexander's 2014 essay)
+- Occam's Razor — Principles — Philosophy & Logic
+- Pascal's Wager — Concept — Philosophy & Logic
+- Prisoner's Dilemma — Concept — Philosophy & Logic
+- Spacing Effect — Effect — Mind & Behavior
+- Stockdale Paradox — Paradox — Mind & Behavior (leadership framing, not a formal logical paradox)
+
+Source checks from this session: pages for the NBER AI paper, SETI Fermi overview, Easterlin Wikipedia overview, IZA dp/13923, NBER w14282, Three Laws of Robotics, the Vanderbilt Runaround exhibit, the four Stanford Encyclopedia articles used here, Slate Star Codex, Jim Collins's Stockdale page, the American Chesterton Society fence page, and Rebecca Ferguson's essay returned HTTP 200 with the expected title. The Spacing Effect PubMed page (PMID 16719566) returned 403 to this agent; NCBI E-utilities confirmed that record as Cepeda et al., Psychological Bulletin, 2006. The Jevons Paradox Wiley page returned a Cloudflare challenge (403); Crossref confirms DOI 10.1111/jiec.13295 as Font Vivanco et al., Journal of Industrial Ecology, 2022. Berkson's Paradox links to the Wikipedia article, which returned 200; the Catalogue of Bias page was blocked by bot protection from this agent. Easterlin's single source field points at the Wikipedia overview of the dispute. Display order ignores apostrophes so Occam's Razor stays before O'Sullivan's Laws.
 
 ## Corrections (2026-11-05 forensic pass)
 
