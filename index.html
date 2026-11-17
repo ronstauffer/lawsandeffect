@@ -9,7 +9,7 @@
   :root {
     --bg: #FAFAF7; --surface: #FFFFFF; --ink: #1A1A2E; --ink-soft: #55556B;
     --line: #E6E6DE; --accent: #4338CA;
-    --law: #B91C1C; --effect: #0E7490; --principles: #4D7C0F; --concept: #7C3AED;
+    --law: #B91C1C; --effect: #0E7490; --principles: #4D7C0F; --concept: #7C3AED; --paradox: #92400E;
   }
   * { box-sizing: border-box; margin: 0; }
   html { scroll-behavior: smooth; }
@@ -47,6 +47,7 @@
   .tag.type[data-type="Effect"] { background: var(--effect); }
   .tag.type[data-type="Principles"] { background: var(--principles); }
   .tag.type[data-type="Concept"] { background: var(--concept); }
+  .tag.type[data-type="Paradox"] { background: var(--paradox); }
   .tag.domain { border: 1px solid; }
   .tag.domain[data-domain="Mind & Behavior"] { background: #FDF2F8; color: #9D174D; border-color: #9D174D; }
   .tag.domain[data-domain="Systems & Tech"] { background: #EFF6FF; color: #1D4ED8; border-color: #1D4ED8; }
@@ -72,7 +73,7 @@
   <div class="header-top">
     <div class="logo">Laws <span class="amp">&amp;</span> Effects</div>
     <div class="search-wrap">
-      <label class="sr-only" for="site-search">Search laws, effects, principles, and concepts</label>
+      <label class="sr-only" for="site-search">Search laws, effects, principles, concepts, and paradoxes</label>
       <span class="icon" aria-hidden="true">&#128269;</span>
       <input id="site-search" type="search" autocomplete="off" placeholder="Search laws, effects, principles&hellip;" />
     </div>
@@ -90,39 +91,54 @@
 
 <script>
 var ENTRIES = [
+  { title: "AI Productivity Paradox", type: "Paradox", domain: "Systems & Tech", definition: "Named in a 2017 analysis by Brynjolfsson, Rock, and Syverson, the AI productivity paradox is the apparent gap between impressive AI capabilities and weak measured aggregate productivity growth. Proposed explanations include implementation lags, complementary investment, measurement problems, and overoptimistic expectations; it does not mean AI never improves productivity, and whether any such gap persists is a separate empirical question.", source: "https://www.nber.org/papers/w24001" },
+  { title: "Arrow's Impossibility Theorem", type: "Concept", domain: "Politics & Society", definition: "With at least three alternatives, no rule that combines everyone's ranked preferences into a coherent collective ranking can satisfy all of Arrow's requirements for every possible preference profile. The result identifies unavoidable trade-offs among those requirements; it does not mean voting or democracy is impossible.", source: "https://plato.stanford.edu/entries/arrows-theorem/" },
+  { title: "Asimov's Three Laws of Robotics", type: "Principles", domain: "Systems & Tech", definition: "Isaac Asimov's fictional robot principles, first stated in the 1942 story Runaround, rank duties as: do not injure a human or allow harm through inaction; obey human orders unless they conflict with the first; and preserve the robot unless that conflicts with the first or second. They are a literary device for stories about conflicts among those rules, not legislation or a proven safety specification.", source: "https://en.wikipedia.org/wiki/Three_Laws_of_Robotics" },
+  { title: "Berkson's Paradox", type: "Paradox", domain: "Science & Physics", definition: "Selecting observations by a shared consequence of two characteristics can create or distort an association between them, so traits unrelated in the wider population can look related in the selected group. The direction depends on how selection works, and not every unrepresentative sample is an example.", source: "https://en.wikipedia.org/wiki/Berkson%27s_paradox" },
   { title: "Betteridge's Law of Headlines", type: "Law", domain: "Media & Society", definition: "An internet adage stating that any newspaper headline that ends in a question mark can be confidently answered by the word 'no.'", source: "https://en.wikipedia.org/wiki/Betteridge%27s_law_of_headlines" },
+  { title: "Chesterton's Fence", type: "Principles", domain: "Politics & Society", definition: "Before removing a law, custom, or other established arrangement, first understand why it was put there; not seeing a use is a reason to investigate, not an automatic reason to abolish it. Once that purpose is understood, change may still be justified if the purpose was bad, has become bad, or is no longer served.", source: "https://www.chesterton.org/taking-a-fence-down/" },
   { title: "Clarke's Three Laws", type: "Law", domain: "Systems & Tech", definition: "A trio of futuristic axioms formulated by writer Arthur C. Clarke, most famously stating that any sufficiently advanced technology is indistinguishable from magic.", source: "https://en.wikipedia.org/wiki/Clarke%27s_three_laws" },
   { title: "Conquest's Laws of Politics", type: "Law", domain: "Politics & Society", definition: "A trio of cynical observations stating that everyone is conservative on what they know best, any organization not explicitly right-wing becomes left-wing, and organizational behavior is best explained by assuming it is controlled by a secret cabal of its enemies.", source: "https://en.wikipedia.org/wiki/Conquest%27s_laws" },
   { title: "Coolidge Effect", type: "Effect", domain: "Mind & Behavior", definition: "A biological phenomenon seen in mammals where males (and to a lesser extent females) exhibit renewed sexual interest when introduced to new receptive partners.", source: "https://en.wikipedia.org/wiki/Coolidge_effect" },
   { title: "Dunning-Kruger Effect", type: "Effect", domain: "Mind & Behavior", definition: "A cognitive bias where people with limited knowledge or competence in a specific domain greatly overestimate their own abilities.", source: "https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect" },
+  { title: "Easterlin Paradox", type: "Paradox", domain: "Politics & Society", definition: "The Easterlin paradox is the reported contrast between richer people tending to say they are happier at a given time and long-run national income growth not consistently bringing matching gains in average happiness. The long-run claim is disputed: other research finds happiness rising along with income.", source: "https://en.wikipedia.org/wiki/Easterlin_paradox" },
+  { title: "Fermi Paradox", type: "Paradox", domain: "Science & Physics", definition: "The Fermi paradox is the apparent tension between expectations that technological civilizations could be widespread and the absence of confirmed evidence of them. It is an unresolved, assumption-dependent puzzle: not seeing clear signs is not proof that humanity is alone.", source: "https://www.seti.org/research/seti-101/fermi-paradox" },
   { title: "First Principles Thinking", type: "Principles", domain: "Philosophy & Logic", definition: "A problem-solving philosophy that requires breaking a complex system down to its most basic, foundational, undeniable truths, and then building an original solution upward from there.", source: "https://en.wikipedia.org/wiki/First_principle" },
   { title: "Flashbulb Memories", type: "Concept", domain: "Mind & Behavior", definition: "A highly vivid, exceptionally detailed snapshot of the moment and context in which a piece of surprising or emotionally consequential news was learned.", source: "https://en.wikipedia.org/wiki/Flashbulb_memory" },
   { title: "Founder Effect", type: "Effect", domain: "Science & Physics", definition: "In genetics, the loss of genetic variation that occurs when a new population is established by a very small number of individuals cleaved from a larger population.", source: "https://en.wikipedia.org/wiki/Founder_effect" },
   { title: "Fresh Start Effect", type: "Effect", domain: "Mind & Behavior", definition: "The tendency of individuals to be highly motivated to pursue new goals around temporal landmarks, such as the start of a new year, month, week, or birthday.", source: "https://en.wikipedia.org/wiki/Fresh_start_effect" },
   { title: "Gell-Mann Amnesia Effect", type: "Effect", domain: "Media & Society", definition: "A cognitive bias where individuals who recognize errors or inaccuracies in media coverage of topics they know well still trust the same media for topics they know less about.", source: "https://ritholtz.com/2002/04/michael-crichtons-why-speculate/" },
   { title: "Halo Effect", type: "Effect", domain: "Mind & Behavior", definition: "A cognitive bias where our overall impression of a person (such as their physical attractiveness) influences how we feel and think about their character or other unrelated traits.", source: "https://en.wikipedia.org/wiki/Halo_effect" },
+  { title: "Intimacy Paradox (Ferguson's framing)", type: "Paradox", domain: "Mind & Behavior", definition: "In Rebecca Ferguson's framing, increasingly effortful attempts to manufacture desire can be felt as pressure, so a partner withdraws and pursuit increases. Her intimacy paradox is an informal name for that reinforcing pattern, drawn from personal and coaching experience, not a universal rule that effort destroys intimacy and not an established scientific finding.", source: "https://3000orgasms.substack.com/p/the-intimacy-paradox" },
+  { title: "Jevons Paradox", type: "Paradox", domain: "Politics & Society", definition: "Making a resource more efficient to use can lower its effective cost and expand demand enough that total consumption rises rather than falls. This is the backfire case of the rebound effect, not an inevitable result of every efficiency improvement.", source: "https://onlinelibrary.wiley.com/doi/full/10.1111/jiec.13295" },
   { title: "Leidenfrost Effect", type: "Effect", domain: "Science & Physics", definition: "A physical phenomenon where a liquid, in near contact with a surface significantly hotter than the liquid's boiling point, produces an insulating vapor layer that keeps that liquid from boiling rapidly.", source: "https://en.wikipedia.org/wiki/Leidenfrost_effect" },
   { title: "Mandela Effect", type: "Effect", domain: "Mind & Behavior", definition: "A phenomenon where a large group of people collectively share a vivid, identical false memory of an event or detail that never actually occurred.", source: "https://www.britannica.com/science/Mandela-effect" },
   { title: "MatPat Effect", type: "Effect", domain: "Mind & Behavior", definition: "A phenomenon where a niche topic, indie game, or obscure lore element experiences a massive, sudden surge in mainstream popularity and economic demand after being analyzed by a major internet influencer.", source: "https://en.wikipedia.org/wiki/MatPat" },
+  { title: "Meditations on Moloch", type: "Concept", domain: "Politics & Society", definition: "Scott Alexander's 2014 essay uses Moloch as a metaphor for competitive incentives and coordination failures that push people to sacrifice things they value, even when they would prefer a better shared outcome. It is an attributed argument about what he calls multipolar traps, not a scientific law, and it does not claim that every competition destroys value.", source: "https://slatestarcodex.com/2014/07/30/meditations-on-moloch/" },
   { title: "Mere Exposure Effect", type: "Effect", domain: "Mind & Behavior", definition: "A psychological phenomenon where people tend to develop a preference or liking for things merely because they are familiar with them.", source: "https://en.wikipedia.org/wiki/Mere-exposure_effect" },
   { title: "Mona Lisa Effect", type: "Effect", domain: "Science & Physics", definition: "A visual illusion where the eyes of a person in a two-dimensional portrait appear to follow the viewer, regardless of where the viewer stands in the room.", source: "https://en.wikipedia.org/wiki/Mona_Lisa_effect" },
   { title: "Moore's Law", type: "Law", domain: "Systems & Tech", definition: "The observation that the number of transistors on a microchip doubles roughly every two years, driving an exponential increase in computing power and decrease in cost.", source: "https://en.wikipedia.org/wiki/Moore%27s_law" },
   { title: "Murphy's Law", type: "Law", domain: "Systems & Tech", definition: "Anything that can go wrong will go wrong, usually at the worst possible moment.", source: "https://en.wikipedia.org/wiki/Murphy%27s_law" },
+  { title: "Occam's Razor", type: "Principles", domain: "Philosophy & Logic", definition: "Other things being equal, prefer the explanation that does not multiply entities or assumptions beyond necessity. Associated with William of Ockham, it is a rule of thumb for choosing among theories, not a proof that the simpler account is true.", source: "https://plato.stanford.edu/entries/simplicity/" },
   { title: "O'Sullivan's Laws", type: "Law", domain: "Politics & Society", definition: "Any organization or enterprise that is not explicitly right-wing will, over time, inevitably become left-wing as it grows.", source: "https://en.wikipedia.org/wiki/O%27Sullivan%27s_law" },
   { title: "Parkinson's Law", type: "Law", domain: "Systems & Tech", definition: "Work expands to fill the time available for its completion, meaning deadlines dictate how long a task takes rather than the work itself.", source: "https://en.wikipedia.org/wiki/Parkinson%27s_law" },
+  { title: "Pascal's Wager", type: "Concept", domain: "Philosophy & Logic", definition: "Blaise Pascal argued that if there is even a small chance God exists and the reward of believing is infinite, it is prudent to wager for God, or at least to take steps that may lead to belief. The wager offers a practical reason to believe, not evidence that God exists, and it is open to objections such as the many-gods problem.", source: "https://plato.stanford.edu/entries/pascal-wager/" },
   { title: "Pluralistic Ignorance Effect", type: "Effect", domain: "Mind & Behavior", definition: "A social situation where a majority of group members privately reject a norm, but incorrectly assume that everyone else accepts it, leading them to go along with it publicly.", source: "https://en.wikipedia.org/wiki/Pluralistic_ignorance" },
   { title: "Poe's Law", type: "Law", domain: "Systems & Tech", definition: "Without a clear indicator of intent (like an emoji), it is impossible to create a parody of extreme views so obvious that it won't be mistaken by some readers for a sincere expression of those views.", source: "https://en.wikipedia.org/wiki/Poe%27s_law" },
+  { title: "Prisoner's Dilemma", type: "Concept", domain: "Philosophy & Logic", definition: "A game in which each player gets a better payoff by defecting no matter what the other chooses, yet both would do better by cooperating than by both defecting. It models a conflict between individual incentives and a shared benefit; repeated encounters can create further reasons to cooperate, but they do not guarantee it.", source: "https://plato.stanford.edu/entries/prisoner-dilemma/" },
   { title: "Pygmalion Effect", type: "Effect", domain: "Mind & Behavior", definition: "A psychological phenomenon where higher expectations placed upon an individual lead to an increase in their performance and achievement.", source: "https://en.wikipedia.org/wiki/Pygmalion_effect" },
   { title: "Romeo and Juliet Effect", type: "Effect", domain: "Mind & Behavior", definition: "The psychological phenomenon where romantic passion or attraction between two individuals intensifies when their relationship faces parental or external opposition.", source: "https://en.wikipedia.org/wiki/Romeo_and_Juliet_effect" },
   { title: "Search Engine Manipulation Effect (SEME)", type: "Effect", domain: "Politics & Society", definition: "The phenomenon where the biased ordering of search engine results significantly alters the preferences, opinions, and voting decisions of undecided users without their awareness.", source: "https://en.wikipedia.org/wiki/Search_engine_manipulation_effect" },
+  { title: "Spacing Effect", type: "Effect", domain: "Mind & Behavior", definition: "Information is generally retained better when learning or practice is spread across separated sessions rather than massed into one session. The useful gap depends on the material and on how long it must be remembered; a longer gap is not always better, and spacing is distinct from retrieval practice.", source: "https://pubmed.ncbi.nlm.nih.gov/16719566/" },
   { title: "Spotlight Effect", type: "Effect", domain: "Mind & Behavior", definition: "A psychological tendency to overestimate how much other people notice, judge, or think about our appearance, behavior, and mistakes.", source: "https://en.wikipedia.org/wiki/Spotlight_effect" },
+  { title: "Stockdale Paradox", type: "Paradox", domain: "Mind & Behavior", definition: "Named by Jim Collins from Admiral James Stockdale's account of surviving captivity, it means keeping faith that you will prevail in the end while facing the brutal facts of the present without denial. It is a leadership and resilience framing, not a formal logical paradox or a proven universal psychological law, and it rejects both deadline-tied false optimism and despair.", source: "https://www.jimcollins.com/concepts/Stockdale-Concept.html" },
   { title: "Streisand Effect", type: "Effect", domain: "Politics & Society", definition: "An unintended consequence where an attempt to hide, remove, or censor a piece of information inadvertently draws massive, widespread public attention to it.", source: "https://en.wikipedia.org/wiki/Streisand_effect" },
   { title: "Taj Mahal Effect", type: "Effect", domain: "Systems & Tech", definition: "A business and design pattern where an organization over-specifies or over-engineers a system or facility to a degree of extreme luxury, making it entirely rigid, overly expensive, and unable to adapt to evolving operational needs.", source: "https://en.wikipedia.org/wiki/Taj_Mahal" },
   { title: "Tocqueville Effect", type: "Effect", domain: "Politics & Society", definition: "The observation that social frustration and public outrage tend to increase after social conditions and civil rights begin to improve, because expectations rise faster than actual progress.", source: "https://en.wikipedia.org/wiki/Tocqueville_effect" }
 ];
 
-var TYPE_TAGS = ["All Types", "Laws", "Effects", "Principles", "Concepts"];
-var TYPE_VALUE = { "All Types": null, "Laws": "Law", "Effects": "Effect", "Principles": "Principles", "Concepts": "Concept" };
+var TYPE_TAGS = ["All Types", "Laws", "Effects", "Principles", "Concepts", "Paradoxes"];
+var TYPE_VALUE = { "All Types": null, "Laws": "Law", "Effects": "Effect", "Principles": "Principles", "Concepts": "Concept", "Paradoxes": "Paradox" };
 var DOMAIN_TAGS = ["All Domains", "Mind & Behavior", "Systems & Tech", "Politics & Society", "Science & Physics", "Media & Society", "Philosophy & Logic"];
 
 var state = { query: "", type: null, domain: null };
@@ -149,6 +165,10 @@ function fuzzyScore(query, text) {
     if (t.charAt(ti) === q.charAt(qi)) qi++;
   }
   return qi === q.length ? 2 : 0;
+}
+
+function titleKey(title) {
+  return title.replace(/['\u2019]/g, "");
 }
 
 function renderFilters() {
@@ -192,7 +212,7 @@ function render() {
       return { entry: e, score: score };
     })
     .filter(function (r) { return r.score > 0; })
-    .sort(function (a, b) { return b.score - a.score || a.entry.title.localeCompare(b.entry.title); })
+    .sort(function (a, b) { return b.score - a.score || titleKey(a.entry.title).localeCompare(titleKey(b.entry.title)); })
     .map(function (r) { return r.entry; });
 
   results.forEach(function (e) {
