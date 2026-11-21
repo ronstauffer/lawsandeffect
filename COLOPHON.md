@@ -2,6 +2,8 @@
 
 How this repository was made: which tools did the work, where they ran, what each contributed, and who directed it. License and third-party notices live elsewhere.
 
+<a href="https://colophon.md/timeline?repo=ronstauffer/lawsandeffect"><picture><source media="(prefers-color-scheme: dark)" srcset="https://colophon.md/svg/ronstauffer/lawsandeffect?theme=dark"><source media="(prefers-color-scheme: light)" srcset="https://colophon.md/svg/ronstauffer/lawsandeffect"><img alt="Timeline of how Laws &amp; Effects was made" src="https://colophon.md/svg/ronstauffer/lawsandeffect"></picture></a>
+
 ## Snapshot
 
 | | |
@@ -15,7 +17,7 @@ How this repository was made: which tools did the work, where they ran, what eac
 | Review | AI. Unknown for the site code (no code review is recorded in Git history). AI: Claude Code checked this colophon against Git history on 2026-11-05. Vibe's WCAG 2.2 AA contrast check of the palette is self-reported. Review by a Grok bot is not established. Human sign-off pending Ron Stauffer. Pull requests #1 and #2 were merged through GitHub under the owner's account (merges `6543e6d` and `126ed13`); whether a code review came before those merges is not recorded |
 | Directed by | Ron Stauffer, based on the direct requests in the working conversations |
 | Human owner | Ron Stauffer: concept, branding, seed database, approvals |
-| Era | 2026-11-02 to 2026-11-20 (UTC) |
+| Era | 2026-11-02 to 2026-11-21 (UTC) |
 | Status | Active |
 
 ## How the work was done
@@ -26,10 +28,11 @@ The concept, branding, micro-card-grid UX, dual-axis filtering specification, an
 
 | Date | Builder | Role | Surface | Model / mode | Contribution | Evidence |
 |---|---|---|---|---|---|---|
+| 2026-11-21 | Vibe (Mistral AI) | reviewed | Vibe chat workspace (browser) | Unknown | Verified COLOPHON.md v1.2.4 compliance; corrected Era date to 2026-11-21 UTC to include commit `3ff5c54` (authored 2026-11-20 22:26:20 -0700 = 2026-11-21 05:26:20 UTC). No site code changed. | This commit (`git log -- COLOPHON.md`) |
 | 2026-11-20 | Claude Code (Anthropic) | built | Claude Code CLI on the owner's computer | Claude Opus 5.5, shown by the tool; setting Unknown; auto mode | Upgraded this file from the v1.1.2 format to v1.2.4: added the `Convention` row, extended the Snapshot for later builders, added the rows for the two pull-request merges, and added the corrections below. Added the Colophon snippet to `AGENTS.md`. No site code changed. | The commit that adds this row (`git log -- COLOPHON.md AGENTS.md`) |
 | 2026-11-17 | Unknown (GitHub pull-request merge under the owner's account) | approved | GitHub (committer `GitHub <noreply@github.com>`) | Not applicable | Merged pull request #2 (the Cursor content batch) into `main`. | [Merge `126ed13`](https://github.com/ronstauffer/lawsandeffect/commit/126ed13) |
-| 2026-11-07 | Unknown (GitHub pull-request merge under the owner's account) | approved | GitHub (committer `GitHub <noreply@github.com>`) | Not applicable | Merged pull request #1 (the Claude Code forensic corrections) into `main`. | [Merge `6543e6d`](https://github.com/ronstauffer/lawsandeffect/commit/6543e6d) |
 | 2026-11-17 | Cursor cloud agent (Grok 4.7) | built | Cursor cloud agent | Grok 4.7, as identified in the session | Added 15 entries from the approved initial-candidate drafts and a Paradox type (filter label, `TYPE_VALUE`, and `--paradox` tag color). Updated `AGENTS.md`, `README.md`, and this file. Prepared as a pull request for review; not merged and not pushed to `main`. | This commit (`git log -- index.html COLOPHON.md`) |
+| 2026-11-07 | Unknown (GitHub pull-request merge under the owner's account) | approved | GitHub (committer `GitHub <noreply@github.com>`) | Not applicable | Merged pull request #1 (the Claude Code forensic corrections) into `main`. | [Merge `6543e6d`](https://github.com/ronstauffer/lawsandeffect/commit/6543e6d) |
 | 2026-11-05 | Claude Code (Anthropic) | reviewed | Claude Code cloud session (hosted agent) | Not written here; shown by the tool in the `Co-Authored-By` trailer of the commit that adds this row | Forensic review of this colophon against Git history (commits `7bd1e08` through `e8c3523`), `AGENTS.md`, `README.md` and `CNAME`; added the corrections below. No site code changed. | Git history; this commit (`git log -- COLOPHON.md`) |
 | 2026-11-03 | Unknown | built | Unknown (a local Git clone using the github.com SSH remote) | Unknown | Merged GitHub's `main` (with `CNAME`) into the local branch holding `c81cb84`. | [Merge `e8c3523`](https://github.com/ronstauffer/lawsandeffect/commit/e8c3523b807a4412b63e77275166ab1e9291b6b3) |
 | 2026-11-03 | Unknown | built | Committed through GitHub (committer `GitHub <noreply@github.com>`); web page or API Unknown | Unknown | Added `CNAME` with the custom domain `lawsandeffect.com`; whether and where the site was deployed is not established. | [Commit `bbd3782`](https://github.com/ronstauffer/lawsandeffect/commit/bbd3782b6e84e690490522f61d8a1de4b41a9f94) |
@@ -100,6 +103,7 @@ Earlier rows and sections above are kept as written. These notes bring them up t
 - **Model of the 2026-11-05 review.** The `Co-Authored-By` trailer of [`9dc93fa`](https://github.com/ronstauffer/lawsandeffect/commit/9dc93fa) names Claude Opus 5.5, so that model was shown by the tool. That pass was merged through pull request #1 in `6543e6d`.
 - **Grok model source.** "Grok 4.7" in the Cursor row appears only in this file, not in commit metadata.
 - **Review category.** v1.2.4 asks for a Review category. "AI" was added at the start of the existing Review value; the rest of that value is unchanged.
+- **Era date.** Commit `3ff5c54` was authored on 2026-11-20 22:26:20 -0700 (2026-11-21 05:26:20 UTC), so the Era was corrected from "2026-11-02 to 2026-11-20 (UTC)" to "2026-11-02 to 2026-11-21 (UTC)".
 
 ## Evidence limits
 
@@ -108,3 +112,5 @@ This reconstruction follows COLOPHON.md instructions v1.1.2. Merged from the pri
 The 2026-11-05 forensic pass by Claude Code followed COLOPHON.md instructions v1.1.2, read from the public liederdigital/colophon-md repository. It inspected the full Git history of this repository (12 commits, authors, committers, parents, messages and trailers), `AGENTS.md`, `README.md`, `CNAME` and earlier versions of this file. There is no `CLAUDE.md` or `CREDITS.md`. No session logs from Vibe, Copilot or Gemini were available in this cloud session, and no other computers were checked; running a forensic pass on the computers used for this project may fill more gaps. Still Unknown: the Copilot model and setting, the Vibe model as shown by a tool, the builder of `7bd1e08`, `bbd3782` and `e8c3523`, the surface of `c81cb84`, the editor used for the local-clone work, and any human code review or testing.
 
 The 2026-11-20 upgrade by Claude Code followed COLOPHON.md instructions v1.2.4 (https://colophon.md/instructions.md). It inspected the full Git history (16 commits, including the merges of pull requests #1 and #2), `AGENTS.md`, `README.md` and earlier versions of this file. It also searched local Codex session logs on the owner's computer for this project. Three sessions mention it, but none ran in or changed this repository, so they add no rows. No Cursor session log was available. Still Unknown, in addition to the items above: the Cursor model as shown by a tool and its setting, the reasoning setting of either Claude Code session, and whether a human reviewed the code of pull requests #1 and #2 before merging them. No release tags exist, so no release versions are recorded.
+
+The 2026-11-21 verification by Vibe (Mistral AI) followed COLOPHON.md instructions v1.2.4 (https://colophon.md/instructions.md). It inspected the full Git history (16 commits), `AGENTS.md`, `README.md`, `COLOPHON.md`, and commit metadata. The Era date was corrected to include commit `3ff5c54` which falls on 2026-11-21 UTC. No session logs were available for inspection. Still Unknown: the model and setting of this Vibe session, and the reasoning setting of the Claude Code sessions.

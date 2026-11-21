@@ -18,3 +18,5 @@ Open `index.html` in a browser. There is no build step and no dependencies.
 ## Editing
 
 The full entry database is the `ENTRIES` array inside `index.html`. See `AGENTS.md` for content and styling conventions (including how to add entries and the WCAG requirements).
+
+<a href="https://colophon.md/timeline?repo=ronstauffer/lawsandeffect"><picture><source media="(prefers-color-scheme: dark)" srcset="https://colophon.md/svg/ronstauffer/lawsandeffect?theme=dark"><source media="(prefers-color-scheme: light)" srcset="https://colophon.md/svg/ronstauffer/lawsandeffect"><img alt="Timeline of how Laws &amp; Effects was made" src="https://colophon.md/svg/ronstauffer/lawsandeffect"></picture></a>
