@@ -29,3 +29,12 @@ Guidance for AI coding agents working on this repository.
 2. Search + both filter axes still work and combine correctly.
 3. No color contrast regressions (WCAG AA).
 4. Commit messages are short, imperative, and describe the user-visible change.
+
+## Colophon
+
+This project keeps COLOPHON.md, a short record of how it was made.
+Agents update it themselves, in the same commit or pull request as their
+work: add a row when the tool, model, model setting, or computer changes,
+when a new phase of work starts, when you review someone else's work, and
+before each release. Never hold up a commit for it. Follow the instructions
+at https://colophon.md/instructions.md.
