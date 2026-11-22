@@ -9,7 +9,7 @@ How this repository was made: which tools did the work, where they ran, what eac
 | | |
 |---|---|
 | Project | Laws & Effects |
-| Convention | [COLOPHON.md](https://colophon.md) v1.2.4 |
+| Convention | [COLOPHON.md](https://colophon.md) v1.3 |
 | Primary builder | Multiple: Gemini 4 Argon (owner-confirmed early architecture and content work); Vibe by Mistral AI (original site implementation, style guide, agent documentation); GitHub Copilot (documented later redesign attempt and colophon work); Cursor cloud agent (2026-11-17 content batch and Paradox type) |
 | Surface | Google Cloud Infrastructure (browser/cloud), Vibe chat workspace (browser), GitHub hosted agent, Cursor cloud agent (hosted agent); Claude Code cloud session and Claude Code CLI for colophon work |
 | Model / mode | Gemini 4 Argon / Argon 4 (Experimental Reasoning Engine), Owner-confirmed (as recorded by an earlier agent); GLM 5.3 (Vibe), agentic with GitHub connector and canvas artifacts, self-reported by Vibe (no commit trailer names a model); Copilot model and setting Unknown; Grok 4.7 (Cursor), as identified in that session, setting Unknown; Claude Opus 5.5 (Claude Code colophon work), shown by the tool, setting Unknown |
@@ -17,7 +17,7 @@ How this repository was made: which tools did the work, where they ran, what eac
 | Review | AI. Unknown for the site code (no code review is recorded in Git history). AI: Claude Code checked this colophon against Git history on 2026-11-05. Vibe's WCAG 2.2 AA contrast check of the palette is self-reported. Review by a Grok bot is not established. Human sign-off pending Ron Stauffer. Pull requests #1 and #2 were merged through GitHub under the owner's account (merges `6543e6d` and `126ed13`); whether a code review came before those merges is not recorded |
 | Directed by | Ron Stauffer, based on the direct requests in the working conversations |
 | Human owner | Ron Stauffer: concept, branding, seed database, approvals |
-| Era | 2026-11-02 to 2026-11-21 (UTC) |
+| Era | 2026-11-02 to 2026-11-22 (UTC) |
 | Status | Active |
 
 ## How the work was done
@@ -28,6 +28,7 @@ The concept, branding, micro-card-grid UX, dual-axis filtering specification, an
 
 | Date | Builder | Role | Surface | Model / mode | Contribution | Evidence |
 |---|---|---|---|---|---|---|
+| 2026-11-22 | Code Monkey (Grok Bot) | built | Grok Bot desktop app, hosted agent | Unknown | Upgraded COLOPHON.md to [COLOPHON.md](https://colophon.md) v1.3 and added the self-contained Colophon snippet to AGENTS.md (replaced the older Colophon snippet in the existing AGENTS.md). Review of this change is pending Ron. Local session logs were not checked. | this pull request |
 | 2026-11-21 | Vibe (Mistral AI) | reviewed | Vibe chat workspace (browser) | Unknown | Verified COLOPHON.md v1.2.4 compliance; corrected Era date to 2026-11-21 UTC to include commit `3ff5c54` (authored 2026-11-20 22:26:20 -0700 = 2026-11-21 05:26:20 UTC). No site code changed. | This commit (`git log -- COLOPHON.md`) |
 | 2026-11-20 | Claude Code (Anthropic) | built | Claude Code CLI on the owner's computer | Claude Opus 5.5, shown by the tool; setting Unknown; auto mode | Upgraded this file from the v1.1.2 format to v1.2.4: added the `Convention` row, extended the Snapshot for later builders, added the rows for the two pull-request merges, and added the corrections below. Added the Colophon snippet to `AGENTS.md`. No site code changed. | The commit that adds this row (`git log -- COLOPHON.md AGENTS.md`) |
 | 2026-11-17 | Unknown (GitHub pull-request merge under the owner's account) | approved | GitHub (committer `GitHub <noreply@github.com>`) | Not applicable | Merged pull request #2 (the Cursor content batch) into `main`. | [Merge `126ed13`](https://github.com/ronstauffer/lawsandeffect/commit/126ed13) |
@@ -114,3 +115,5 @@ The 2026-11-05 forensic pass by Claude Code followed COLOPHON.md instructions v1
 The 2026-11-20 upgrade by Claude Code followed COLOPHON.md instructions v1.2.4 (https://colophon.md/instructions.md). It inspected the full Git history (16 commits, including the merges of pull requests #1 and #2), `AGENTS.md`, `README.md` and earlier versions of this file. It also searched local Codex session logs on the owner's computer for this project. Three sessions mention it, but none ran in or changed this repository, so they add no rows. No Cursor session log was available. Still Unknown, in addition to the items above: the Cursor model as shown by a tool and its setting, the reasoning setting of either Claude Code session, and whether a human reviewed the code of pull requests #1 and #2 before merging them. No release tags exist, so no release versions are recorded.
 
 The 2026-11-21 verification by Vibe (Mistral AI) followed COLOPHON.md instructions v1.2.4 (https://colophon.md/instructions.md). It inspected the full Git history (16 commits), `AGENTS.md`, `README.md`, `COLOPHON.md`, and commit metadata. The Era date was corrected to include commit `3ff5c54` which falls on 2026-11-21 UTC. No session logs were available for inspection. Still Unknown: the model and setting of this Vibe session, and the reasoning setting of the Claude Code sessions.
+
+This 2026-11-22 v1.3 upgrade inspected GitHub history (commits, pull requests, and releases) only. Local session logs were not checked.
